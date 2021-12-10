@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Text, Heading, Box, Flex } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
+import { RootState } from "../../store";
 import HeroCarousel from "../HeroCarousel";
+import styles from './HeroSection.module.css';
 
-const loopWords = ["web", "native"];
+const loopWords = ["web", "native", "saas", "ecommerce"];
 
 function HeroSection() {
+  const {theme} = useSelector((state:RootState)=>state.theme);
   const [word, setWord] = useState(loopWords[0]);
 
   useEffect(() => {
     let wordInterval = setInterval(() => {
       let wordIndex = loopWords.indexOf(word);
-      setWord(loopWords[(wordIndex + 1) % 2]);
+      setWord(loopWords[(wordIndex + 1) % 4]);
     }, 2000);
 
     return () => {
@@ -21,14 +25,26 @@ function HeroSection() {
 
   return (
     <Flex height="100vh" justifyContent="center" alignItems="center">
-      <Flex height="100%" width="50%" justifyContent="center" alignItems="center">
-        <Heading as="h1" display="flex" flexFlow="column">
+      <Flex
+        height="100%"
+        width="50%"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Heading
+          className={styles.heroSectionLoopText}
+          as="h1"
+          display="flex"
+          flexFlow="column"
+          color={theme.darkMode ? "white" : "black"}
+        >
           <Text
+            className={styles.heroSectionLoopText}
             display="inline-block"
             pt={2}
             pb={2}
-            backgroundColor="black"
-            color="white"
+            backgroundColor={theme.darkMode ? "white" : "black"}
+            color={theme.darkMode ? "black" : "white"}
           >
             <AnimatePresence exitBeforeEnter>
               <motion.div
