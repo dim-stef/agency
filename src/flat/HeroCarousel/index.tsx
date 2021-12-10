@@ -116,7 +116,7 @@ function HeroCarousel() {
 
             return (
               <motion.div
-                initial={false}
+                // initial={false}
                 className={styles.heroCarouselItemContainer}
                 style={{ position: "absolute" }}
                 // transition={{ duration: 0.5 }}
