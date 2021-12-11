@@ -31,38 +31,49 @@ function HeroSection() {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading
-          className={styles.heroSectionLoopText}
-          as="h1"
-          display="flex"
-          flexFlow="column"
-          color={theme.darkMode ? "white" : "black"}
-        >
-          <Text
+        <Flex flexFlow="column">
+          <Heading
             className={styles.heroSectionLoopText}
-            display="inline-block"
-            pt={2}
-            pb={2}
-            backgroundColor={theme.darkMode ? "white" : "black"}
-            color={theme.darkMode ? "black" : "white"}
+            as="h1"
+            display="flex"
+            flexFlow="column"
+            color={theme.darkMode ? "white" : "black"}
           >
-            <AnimatePresence exitBeforeEnter>
-              <motion.div
-                key={word}
-                initial={{ y: -10 }}
-                animate={{ y: 0 }}
-                exit={{ y: 10 }}
-                transition={{ duration: 0.15 }}
-              >
-                {word}
-              </motion.div>
-            </AnimatePresence>
-          </Text>{" "}
-          development
-        </Heading>
+            <Text
+              className={styles.heroSectionLoopText}
+              display="inline-block"
+              pt={2}
+              pb={2}
+              backgroundColor={theme.darkMode ? "white" : "black"}
+              color={theme.darkMode ? "black" : "white"}
+            >
+              <AnimatePresence exitBeforeEnter>
+                <motion.div
+                  key={word}
+                  initial={{ y: -10 }}
+                  animate={{ y: 0 }}
+                  exit={{ y: 10 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  {word}
+                </motion.div>
+              </AnimatePresence>
+            </Text>{" "}
+            development
+          </Heading>
+          <Heading mt={10} maxW="300px" fontSize="xl">for startups by startuppers</Heading>
+        </Flex>
       </Flex>
-      <Flex w="100%" h="100%" alignItems="center" justifyContent="center" flexFlow="column">
-        <Heading>Our work</Heading>
+      <Flex
+        w="100%"
+        position="relative"
+        alignItems="center"
+        justifyContent="center"
+        flexFlow="column"
+      >
+        <Heading position="absolute" top="10px">
+          our work
+        </Heading>
         <HeroCarousel />
       </Flex>
     </Flex>

@@ -8,6 +8,36 @@
         "primaryColor": "#a9eed0",
         "secondaryColor": "#ffd29b",
         "darkMode": false,
+        "type": "E-learning",
+        "tags": ["stripe", "react", "react native", "django"],
+                "links": [
+            {
+                "title": "Landing page",
+                "href": "https://troosh.app"
+            },
+            {
+                "title": "Landing page",
+                "href": "https://troosh.app"
+            }
+        ],
+        "showcase": [
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            }
+        ],
         "width": 1189,
         "height": 606
     },
@@ -20,11 +50,41 @@
         "primaryColor": "white",
         "secondaryColor": "red",
         "darkMode": false,
+        "type": "Public sector",
+        "tags": ["stripe", "react", "react native", "django"],
+        "links": [
+            {
+                "title": "Landing page",
+                "href": "https://troosh.app"
+            },
+            {
+                "title": "Landing page",
+                "href": "https://troosh.app"
+            }
+        ],
+        "showcase": [
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            }
+        ],
         "width": 1189,
         "height": 606
     },
     {
-        "name": "lkmflksdfskldfj",
+        "name": "Westeria",
         "images": [
             "https://images.ctfassets.net/j13ckz5bfv57/4cNKQyOMyNdiLNiAfehb9y/04308a62a51e44e0290b51a075f4dd63/242799829_130968285889259_7325737841235048501_n.png"
         ],
@@ -32,19 +92,37 @@
         "primaryColor": "black",
         "secondaryColor": "white",
         "darkMode": true,
+        "type": "Public sector",
+        "tags": ["stripe", "react", "react native", "django"],
+                "links": [
+            {
+                "title": "Landing page",
+                "href": "https://troosh.app"
+            },
+            {
+                "title": "Landing page",
+                "href": "https://troosh.app"
+            }
+        ],
+        "showcase": [
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            },
+            {
+                "src": "https://www.mobafire.com/images/tft/set6/champion/icon/twitch.png",
+                "description": "Hotspot would inform users on how packed places would be."
+            }
+        ],
         "width": 1189,
         "height": 616
-    },
-    {
-        "name": "adsasd",
-        "images": [
-            "https://troosh.app/ios/immentee.webp"
-        ],
-        "description": "Troosh is a platform which introduces a new experience for online learning.",
-        "primaryColor": "white",
-        "secondaryColor": "white",
-        "darkMode": false,
-        "width": 340,
-        "height": 736
     }
 ]
