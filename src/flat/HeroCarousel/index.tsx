@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Flex } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
-import { Project } from "../HeroCarouselItem/interface";
+import { ProjectInterface } from "../HeroCarouselItem/interface";
 import HeroCarouselItem from "../HeroCarouselItem";
 import { changeTheme } from "../../features/theme/themeSlice";
 import styles from "../HeroCarouselItem/HeroCarouselItem.module.css";
@@ -38,7 +38,7 @@ function getItemVerticalPosition(i: number) {
 
 const range = [-1, 0, 1];
 
-const variants = (project: Project) => {
+const variants = (project: ProjectInterface) => {
   const width = 600;
   const aspectRatio = project.width / project.height;
   const height = width / aspectRatio;
@@ -86,7 +86,7 @@ function HeroCarousel() {
   }
 
   return (
-    <Flex w="70%" h="100%">
+    <Flex w="70%">
       <Flex
         h="100%"
         w="100%"
@@ -98,7 +98,7 @@ function HeroCarousel() {
           {range.map((rangeValue, i) => {
             // i = 1,2,3,4,5....
             // custom = -1,0,1
-            let project: Project | undefined;
+            let project: ProjectInterface | undefined;
             if (index == 0 && rangeValue == -1) {
               project = projects[projects.length - 1];
             }

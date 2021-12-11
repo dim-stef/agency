@@ -3,7 +3,7 @@ export interface HeroCarouselItemProps{
     project: Project;
 }
 
-export interface Project{
+export interface ProjectInterface{
     name: string;
     images: string[];
     description: string;

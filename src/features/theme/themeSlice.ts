@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Project } from "../../flat/HeroCarouselItem/interface";
+import { ProjectInterface } from "../../flat/HeroCarouselItem/interface";
+import Project from "../../flat/Project";
 import projects from '../../data/projects.json';
 
 export const themeSlice = createSlice({
@@ -8,7 +9,7 @@ export const themeSlice = createSlice({
     theme: projects[0],
   },
   reducers: {
-    changeTheme: (state, action: PayloadAction<Project>) => {
+    changeTheme: (state, action: PayloadAction<ProjectInterface>) => {
       state.theme = action.payload;
     },
   },

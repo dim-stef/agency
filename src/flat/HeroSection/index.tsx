@@ -6,7 +6,7 @@ import { RootState } from "../../store";
 import HeroCarousel from "../HeroCarousel";
 import styles from './HeroSection.module.css';
 
-const loopWords = ["web", "native", "saas", "ecommerce"];
+const loopWords = ["web", "native", "saas", "e-commerce"];
 
 function HeroSection() {
   const {theme} = useSelector((state:RootState)=>state.theme);
@@ -61,7 +61,10 @@ function HeroSection() {
           development
         </Heading>
       </Flex>
-      <HeroCarousel />
+      <Flex w="100%" h="100%" alignItems="center" justifyContent="center" flexFlow="column">
+        <Heading>Our work</Heading>
+        <HeroCarousel />
+      </Flex>
     </Flex>
   );
 }
