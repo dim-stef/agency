@@ -6,7 +6,7 @@ function HeroCarouselItem({ isPrimary, project }: HeroCarouselItemProps) {
     <Box w={"100%"} h={"100%"}>
       <img
         src={project.images[0]}
-        style={{ height: "100%", objectFit: isPrimary ? 'contain' : 'cover'}}
+        style={{ height: "100%", objectFit: isPrimary ? 'contain' : 'cover', userSelect: 'none'}}
       />
     </Box>
   );
