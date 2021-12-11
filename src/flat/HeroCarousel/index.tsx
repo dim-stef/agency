@@ -73,6 +73,9 @@ function HeroCarousel() {
   const direction = useRef("");
 
   function onItemClick(i: number, rangeValue: number) {
+    if(rangeValue==0){
+      return;
+    }
     const project = projects[i];
     dispatch(changeTheme(project));
 
