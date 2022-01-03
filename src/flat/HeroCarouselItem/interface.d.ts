@@ -21,6 +21,8 @@ export interface ProjectInterface {
 
 export interface ProjectFrontImageInterface{
   src: string;
+  width: number;
+  height: number;
 }
 
 export interface ProjectLinkInterface{

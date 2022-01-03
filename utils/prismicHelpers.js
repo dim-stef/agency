@@ -50,6 +50,7 @@ export function extractProjectDataFromPrisma(data){
             width: project.front_image.dimensions.width,
             height: project.front_image.dimensions.height,
           },
+          type: project.type[0]['text'],
           primaryColor: project.primary_color,
           secondaryColor: project.secondary_color,
           darkMode: project.dark_mode,

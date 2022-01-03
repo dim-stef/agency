@@ -39,7 +39,7 @@ const range = [-1, 0, 1];
 
 const variants = (project: ProjectInterface) => {
   const width = 600;
-  const aspectRatio = project.width / project.height;
+  const aspectRatio = project.frontImage.width / project.frontImage.height;
   const height = width / aspectRatio;
 
   return {

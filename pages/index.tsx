@@ -28,7 +28,10 @@ const Home = ({ projects, fullData }: HomeProps) => {
   const { theme } = useSelector((state: RootState) => state.theme);
 
   console.log("projects", projects, fullData);
-  dispatch(changeTheme(projects[0]));
+
+  useEffect(() => {
+    dispatch(changeTheme(projects[0]));
+  }, []);
 
   useEffect(() => {
     if (theme?.darkMode) {
@@ -80,6 +83,5 @@ export async function getStaticProps() {
     },
   };
 }
-
 
 export default Home;
