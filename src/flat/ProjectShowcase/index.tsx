@@ -11,7 +11,7 @@ function ProjectShowcase() {
     <Flex flexFlow="column" alignItems="center" mt={10}>
       <Heading>showcase</Heading>
       <Flex flexFlow="row wrap" justifyContent="space-evenly" w="100%" mt={10}>
-        {theme.showcase.map((item) => {
+        {theme?.showcase.map((item) => {
           return (
             <Flex
               flexFlow="column"

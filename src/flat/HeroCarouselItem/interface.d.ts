@@ -5,7 +5,8 @@ export interface HeroCarouselItemProps{
 
 export interface ProjectInterface {
   name: string;
-  images: string[];
+  images?: string[];
+  frontImage: ProjectFrontImageInterface;
   description: string;
   primaryColor: string;
   secondaryColor: string;
@@ -16,6 +17,10 @@ export interface ProjectInterface {
   showcase: ProjectShowcase[];
   height: number;
   width: number;
+}
+
+export interface ProjectFrontImageInterface{
+  src: string;
 }
 
 export interface ProjectLinkInterface{

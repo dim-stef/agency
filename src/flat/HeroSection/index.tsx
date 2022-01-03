@@ -3,13 +3,18 @@ import { useSelector } from "react-redux";
 import { Text, Heading, Box, Flex } from "@chakra-ui/layout";
 import { AnimatePresence, motion } from "framer-motion";
 import { RootState } from "../../store";
+import { ProjectInterface } from "../HeroCarouselItem/interface";
 import HeroCarousel from "../HeroCarousel";
 import styles from './HeroSection.module.css';
 
 const loopWords = ["web", "native", "saas", "e-commerce"];
 
-function HeroSection() {
-  const {theme} = useSelector((state:RootState)=>state.theme);
+interface HeroSectionProps{
+  projects: ProjectInterface[]
+}
+
+function HeroSection({ projects }: HeroSectionProps) {
+  const { theme } = useSelector((state: RootState) => state.theme);
   const [word, setWord] = useState(loopWords[0]);
 
   useEffect(() => {
@@ -37,15 +42,15 @@ function HeroSection() {
             as="h1"
             display="flex"
             flexFlow="column"
-            color={theme.darkMode ? "white" : "black"}
+            color={theme?.darkMode ? "white" : "black"}
           >
             <Text
               className={styles.heroSectionLoopText}
               display="inline-block"
               pt={2}
               pb={2}
-              backgroundColor={theme.darkMode ? "white" : "black"}
-              color={theme.darkMode ? "black" : "white"}
+              backgroundColor={theme?.darkMode ? "white" : "black"}
+              color={theme?.darkMode ? "black" : "white"}
             >
               <AnimatePresence exitBeforeEnter>
                 <motion.div
@@ -61,7 +66,9 @@ function HeroSection() {
             </Text>{" "}
             development
           </Heading>
-          <Heading mt={10} maxW="300px" fontSize="xl">for startups by startuppers</Heading>
+          <Heading mt={10} maxW="300px" fontSize="xl">
+            for startups by startuppers
+          </Heading>
         </Flex>
       </Flex>
       <Flex
@@ -74,7 +81,7 @@ function HeroSection() {
         <Heading position="absolute" top="10px">
           our work
         </Heading>
-        <HeroCarousel />
+        <HeroCarousel projects={projects}/>
       </Flex>
     </Flex>
   );

@@ -2,22 +2,36 @@ import { useEffect } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Prismic from "@prismicio/client";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import NavigationBar from "../src/flat/NavigationBar";
 import HeroSection from "../src/flat/HeroSection";
 import Project from "../src/flat/Project";
+import { ProjectInterface } from "../src/flat/HeroCarouselItem/interface";
 import ProjectShowcase from "../src/flat/ProjectShowcase";
 import { RootState } from "../src/store";
+import Client from "../utils/prismicHelpers";
+import { extractProjectDataFromPrisma } from "../utils/prismicHelpers";
+import { changeTheme } from "../src/features/theme/themeSlice";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+interface HomeProps {
+  projects: ProjectInterface[];
+  fullData: any;
+}
+
+const Home = ({ projects, fullData }: HomeProps) => {
+  const dispatch = useDispatch();
   const { colorMode, toggleColorMode } = useColorMode();
   const { theme } = useSelector((state: RootState) => state.theme);
 
+  console.log("projects", projects, fullData);
+  dispatch(changeTheme(projects[0]));
+
   useEffect(() => {
-    if (theme.darkMode) {
+    if (theme?.darkMode) {
       if (colorMode == "light") {
         toggleColorMode();
       }
@@ -30,10 +44,10 @@ const Home: NextPage = () => {
 
   return (
     <Box width="100%">
-      <NavigationBar/>
-      <HeroSection />
+      <NavigationBar />
+      <HeroSection projects={projects} />
       <Project />
-      <ProjectShowcase/>
+      <ProjectShowcase />
       {/* <Flex height="2000px" flexDirection="row">
         <PortfolioBox />
         <Flex width="40%" flexDirection="column" justifyContent="center">
@@ -52,5 +66,20 @@ const Home: NextPage = () => {
     </Box>
   );
 };
+
+export async function getStaticProps() {
+  const docs = await Client().query(
+    Prismic.Predicates.at("document.type", "project")
+  );
+  console.log("docs", docs);
+
+  return {
+    props: {
+      projects: extractProjectDataFromPrisma(docs),
+      fullData: docs,
+    },
+  };
+}
+
 
 export default Home;

@@ -6,7 +6,6 @@ import { ProjectInterface } from "../HeroCarouselItem/interface";
 import HeroCarouselItem from "../HeroCarouselItem";
 import { changeTheme } from "../../features/theme/themeSlice";
 import styles from "../HeroCarouselItem/HeroCarouselItem.module.css";
-import projects from "../../data/projects.json";
 
 function getItemMoveLeftPosition(i: number) {
   if (i == 0) {
@@ -65,7 +64,11 @@ const variants = (project: ProjectInterface) => {
   };
 };
 
-function HeroCarousel() {
+interface HeroCarouselProps{
+  projects: ProjectInterface[];
+}
+
+function HeroCarousel({ projects }: HeroCarouselProps) {
   const dispatch = useDispatch();
 
   const [index, setIndex] = useState(0);
@@ -73,7 +76,7 @@ function HeroCarousel() {
   const direction = useRef("");
 
   function onItemClick(i: number, rangeValue: number) {
-    if(rangeValue==0){
+    if (rangeValue == 0) {
       return;
     }
     const project = projects[i];

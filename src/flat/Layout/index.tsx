@@ -15,7 +15,7 @@ function Layout({ children }: LayoutProps) {
     <Flex
       minHeight="100%"
       width="100%"
-      bgColor={theme.primaryColor}
+      bgColor={theme?.primaryColor}
       className={styles.layout}
     >
       {children}
