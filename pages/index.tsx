@@ -30,7 +30,7 @@ const Home = ({ projects, fullData }: HomeProps) => {
   console.log("projects", projects, fullData);
 
   useEffect(() => {
-    dispatch(changeTheme(projects[0]));
+    dispatch(changeTheme(projects.find((project) => project.isPrimary) || projects[0]));
   }, []);
 
   useEffect(() => {

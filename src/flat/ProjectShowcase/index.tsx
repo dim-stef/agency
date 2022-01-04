@@ -18,8 +18,8 @@ function ProjectShowcase() {
               m={10}
               className={styles.projectShowcaseItem}
             >
-              <img src={item.src} />
-              <Text m={5}>{item.description}</Text>
+              <img src={item.src} style={{height: 300, width: '100%', objectFit: 'cover'}}/>
+              <Text m={5}>{item.title}</Text>
             </Flex>
           );
         })}

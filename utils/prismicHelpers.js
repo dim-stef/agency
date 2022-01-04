@@ -38,38 +38,56 @@ const createClientOptions = (
   };
 };
 
-export function extractProjectDataFromPrisma(data){
-    const projectData = data;
-    return projectData.results.map((_project=>{
-      let project = _project.data;
+export function extractProjectDataFromPrisma(data) {
+  let projectData = data;
+  projectData = projectData.results.map((_project) => {
+    let project = _project.data;
+    return {
+      name: project.name[0]["text"],
+      description: project.description[0]["text"],
+      frontImage: {
+        src: project.front_image.url,
+        width: project.front_image.dimensions.width,
+        height: project.front_image.dimensions.height,
+      },
+      isPrimary: project.is_primary,
+      type: project.type[0]["text"],
+      primaryColor: project.primary_color,
+      secondaryColor: project.secondary_color,
+      darkMode: project.dark_mode,
+      tags: project.tags.map((tag) => tag.tag[0]["text"]),
+      links: project.project_links.map((project_link) => {
         return {
-          name: project.name[0]["text"],
-          description: project.description[0]['text'],
-          frontImage: {
-            src: project.front_image.url,
-            width: project.front_image.dimensions.width,
-            height: project.front_image.dimensions.height,
-          },
-          type: project.type[0]['text'],
-          primaryColor: project.primary_color,
-          secondaryColor: project.secondary_color,
-          darkMode: project.dark_mode,
-          tags: project.tags.map((tag=>tag.tag[0]['text'])),
-          links: project.project_links.map(project_link=>{
-            return {
-              href: project_link.link.url,
-              title: project_link.link_title[0]['text'],
-            };
-          }),
-          showcase: project.project_images.map((showcase) => {
-            return {
-              src: showcase.showcase_image.url,
-              description:
-                showcase.showcase_image_description[0]["text"],
-            };
-          }),
+          href: project_link.link.url,
+          title: project_link.link_title[0]["text"],
         };
-    }))
+      }),
+      showcase: project.project_images.map((showcase) => {
+        return {
+          src: showcase.showcase_image.url,
+          title:
+            showcase.showcase_image_title.length > 0
+              ? showcase.showcase_image_title[0]["text"]
+              : "",
+
+          description:
+            showcase.showcase_image_description.length > 0
+              ? showcase.showcase_image_description[0]["text"]
+              : "",
+        };
+      }),
+    };
+
+  });
+
+  // find the primary project and change its position from wherever it is to the 0 index
+  // this is so it appears as the initial one in the carousel
+  let primary = projectData.find((project)=>project.isPrimary);
+  let primaryIndex = projectData.findIndex((project) => project.isPrimary);
+  projectData.splice(primaryIndex, 1);
+  projectData.splice(0, 0, primary);
+
+  return projectData;
 }
 
 export default Client;

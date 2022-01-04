@@ -31,7 +31,7 @@ function Project() {
           style={{
             width: "45%",
             borderRadius: 10,
-            border: `3px solid ${colorMode == "dark" ? "white" : "#2c2c2c"}`,
+            border: `3px solid ${colorMode == "dark" ? "#2c2c2c" : "#2c2c2c"}`,
           }}
         />
         <Flex flexFlow="column" w="45%">

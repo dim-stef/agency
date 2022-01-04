@@ -1,11 +1,12 @@
-export interface HeroCarouselItemProps{
-    isPrimary?: boolean;
-    project: Project;
+export interface HeroCarouselItemProps {
+  isPrimary?: boolean;
+  project: Project;
 }
 
 export interface ProjectInterface {
   name: string;
   images?: string[];
+  isPrimary: boolean;
   frontImage: ProjectFrontImageInterface;
   description: string;
   primaryColor: string;
@@ -19,18 +20,19 @@ export interface ProjectInterface {
   width: number;
 }
 
-export interface ProjectFrontImageInterface{
+export interface ProjectFrontImageInterface {
   src: string;
   width: number;
   height: number;
 }
 
-export interface ProjectLinkInterface{
-    title: string;
-    href: string;
+export interface ProjectLinkInterface {
+  title: string;
+  href: string;
 }
 
 export interface ProjectShowcase {
   src: string;
   description: string;
+  title: string;
 }
