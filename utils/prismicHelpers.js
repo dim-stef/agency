@@ -62,6 +62,7 @@ export function extractProjectDataFromPrisma(data) {
           title: project_link.link_title[0]["text"],
         };
       }),
+      showcaseVertical: project.showcase_vertical,
       showcase: project.project_images.map((showcase) => {
         return {
           src: showcase.showcase_image.url,
@@ -77,7 +78,6 @@ export function extractProjectDataFromPrisma(data) {
         };
       }),
     };
-
   });
 
   // find the primary project and change its position from wherever it is to the 0 index

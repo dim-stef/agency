@@ -3,22 +3,35 @@ import { Box, Flex } from "@chakra-ui/layout";
 import { Heading, Text } from "@chakra-ui/layout";
 import { ProjectInterface } from "../HeroCarouselItem/interface";
 import { RootState } from "../../store";
-import styles from './ProjectShowcase.module.css';
+import styles from "./ProjectShowcase.module.css";
 
 function ProjectShowcase() {
-  const {theme} = useSelector((state: RootState)=>state.theme);
+  const { theme } = useSelector((state: RootState) => state.theme);
   return (
     <Flex flexFlow="column" alignItems="center" mt={10}>
       <Heading>showcase</Heading>
-      <Flex flexFlow="row wrap" justifyContent="space-evenly" w="100%" mt={10}>
+      <Flex
+        flexFlow="row wrap"
+        justifyContent="space-evenly"
+        w="100%"
+        mt={10}
+        className={styles.projectShowcase}
+      >
         {theme?.showcase.map((item) => {
           return (
             <Flex
               flexFlow="column"
-              m={10}
+              p={5}
+              m={5}
               className={styles.projectShowcaseItem}
             >
-              <img src={item.src} style={{height: 300, width: '100%', objectFit: 'cover'}}/>
+              <img
+                src={item.src}
+                className={styles.projectShowcaseItemImage}
+                style={{
+                  height: theme?.showcaseVertical ? 500 : 300,
+                }}
+              />
               <Text m={5}>{item.title}</Text>
             </Flex>
           );

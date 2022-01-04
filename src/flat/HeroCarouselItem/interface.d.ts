@@ -7,6 +7,7 @@ export interface ProjectInterface {
   name: string;
   images?: string[];
   isPrimary: boolean;
+  showcaseVertical: boolean;
   frontImage: ProjectFrontImageInterface;
   description: string;
   primaryColor: string;
