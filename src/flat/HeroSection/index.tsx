@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Text, Heading, Box, Flex } from "@chakra-ui/layout";
+import { useMediaQuery } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { RootState } from "../../store";
 import { ProjectInterface } from "../HeroCarouselItem/interface";
@@ -15,6 +16,8 @@ interface HeroSectionProps{
 
 function HeroSection({ projects }: HeroSectionProps) {
   const { theme } = useSelector((state: RootState) => state.theme);
+  const [isLargerThan1000] = useMediaQuery("(min-width: 1000px)");
+  const [isSmallerThan1260] = useMediaQuery("(max-width: 1260px)");
   const [word, setWord] = useState(loopWords[0]);
 
   useEffect(() => {
@@ -29,12 +32,18 @@ function HeroSection({ projects }: HeroSectionProps) {
   }, [word]);
 
   return (
-    <Flex height="100vh" justifyContent="center" alignItems="center">
+    <Flex
+      height="100vh"
+      justifyContent="center"
+      alignItems="center"
+      className={styles.heroContainer}
+    >
       <Flex
         height="100%"
         width="50%"
         justifyContent="center"
         alignItems="center"
+        className={styles.heroSectionTextContainer}
       >
         <Flex flexFlow="column">
           <Heading
@@ -78,10 +87,10 @@ function HeroSection({ projects }: HeroSectionProps) {
         justifyContent="center"
         flexFlow="column"
       >
-        <Heading position="absolute" top="10px">
+        <Heading position="absolute" className={styles.ourWork}>
           our work
         </Heading>
-        <HeroCarousel projects={projects}/>
+        <HeroCarousel projects={projects} />
       </Flex>
     </Flex>
   );

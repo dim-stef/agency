@@ -1,3 +1,31 @@
-.heroSectionLoopText{
-    transition: all 0.2s;
+.heroSectionLoopText {
+  transition: all 0.2s;
+}
+
+.heroContainer {
+  flex-flow: row;
+}
+
+.ourWork {
+  top: 10px;
+}
+
+@media all and (max-width: 1260px) {
+  .ourWork {
+    top: -20px;
+  }
+  .heroContainer {
+    flex-flow: column;
+    margin-top: 200px;
+  }
+
+  .heroSectionTextContainer {
+    margin: 150px 0;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .ourWork {
+    top: 10px;
+  }
 }

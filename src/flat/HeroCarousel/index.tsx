@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Flex } from "@chakra-ui/layout";
+import { useMediaQuery } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ProjectInterface } from "../HeroCarouselItem/interface";
 import HeroCarouselItem from "../HeroCarouselItem";
@@ -27,6 +28,20 @@ function getItemMoveRightPosition(i: number) {
   }
 }
 
+function getItemMoveTopPosition(
+  i: number,
+  isSmallerThan600: boolean,
+  deviceWidth: number
+) {
+  if (i == 0) {
+    return 0;
+  } else if (i == 1) {
+    return deviceWidth * 0.1;
+  } else {
+    return deviceWidth * (-0.1);
+  }
+}
+
 function getItemVerticalPosition(i: number) {
   if (i == 0) {
     return 0;
@@ -37,10 +52,20 @@ function getItemVerticalPosition(i: number) {
 
 const range = [-1, 0, 1];
 
-const variants = (project: ProjectInterface) => {
-  const width = 600;
+const variants = (
+  project: ProjectInterface,
+  isSmallerThan600: boolean,
+  deviceWidth: number
+) => {
+  // const bigWidth = isSmallerThan600 ? 300 : 600;
+  // const smallWidth = isSmallerThan600 ? 250 : 300;
+
+  const bigWidth = Math.min(600, deviceWidth * 0.8);
+  const smallWidth = Math.min(400, deviceWidth * 0.6);
+
   const aspectRatio = project.frontImage.width / project.frontImage.height;
-  const height = width / aspectRatio;
+  const bigHeight = bigWidth / aspectRatio;
+  const smallHeight = smallWidth / aspectRatio;
 
   return {
     left: (i: number) => ({
@@ -53,9 +78,19 @@ const variants = (project: ProjectInterface) => {
     }),
     right: (i: number) => ({
       x: getItemMoveRightPosition(i),
-      width: i == 0 ? 600 : 300,
+      width: i == 0 ? bigWidth : smallWidth,
       // height: i == 0 ? 400 : 200,
-      height: i == 0 ? Math.min(height, 500) : 200,
+      height: i == 0 ? Math.min(bigHeight, 500) : smallHeight,
+      zIndex: i == 0 ? 100 : 1,
+      // transition: {
+      //   delay: i * 0.3,
+      // },
+    }),
+    top: (i: number) => ({
+      y: getItemMoveTopPosition(i, isSmallerThan600, deviceWidth),
+      width: i == 0 ? bigWidth : smallWidth,
+      // height: i == 0 ? 400 : 200,
+      height: i == 0 ? Math.min(bigHeight, 500) : 200,
       zIndex: i == 0 ? 100 : 1,
       // transition: {
       //   delay: i * 0.3,
@@ -64,16 +99,35 @@ const variants = (project: ProjectInterface) => {
   };
 };
 
-interface HeroCarouselProps{
+interface HeroCarouselProps {
   projects: ProjectInterface[];
 }
 
 function HeroCarousel({ projects }: HeroCarouselProps) {
+  const [deviceWidth, setDeviceWidth] = useState(0);
+  const [isLargerThan1260] = useMediaQuery("(min-width: 1260px)");
+  const [isLargerThan1000] = useMediaQuery("(min-width: 1000px)");
+  const [isSmallerThan600] = useMediaQuery("(max-width: 600px)");
+  const [isSmallerThan400] = useMediaQuery("(max-width: 400px)");
   const dispatch = useDispatch();
 
+  console.log("width", deviceWidth);
   const [index, setIndex] = useState(0);
   const prevIndex = useRef(index);
   const direction = useRef("");
+
+  function onWindowWidthChange() {
+    setDeviceWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    onWindowWidthChange();
+    window.addEventListener("resize", onWindowWidthChange);
+
+    return () => {
+      window.removeEventListener("resize", onWindowWidthChange);
+    };
+  }, []);
 
   function onItemClick(i: number, rangeValue: number) {
     if (rangeValue == 0) {
@@ -128,8 +182,12 @@ function HeroCarousel({ projects }: HeroCarouselProps) {
                 // transition={{ duration: 0.5 }}
                 key={projectIndex}
                 custom={rangeValue}
-                animate={direction.current == "left" ? "left" : "right"}
-                variants={variants(projects[projectIndex])}
+                animate={isLargerThan1260 ? "right" : "top"}
+                variants={variants(
+                  projects[projectIndex],
+                  isSmallerThan600,
+                  deviceWidth
+                )}
                 onClick={() => onItemClick(projectIndex, rangeValue)}
               >
                 <HeroCarouselItem

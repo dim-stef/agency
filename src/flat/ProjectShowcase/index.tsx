@@ -24,6 +24,7 @@ function ProjectShowcase() {
               p={5}
               m={5}
               className={styles.projectShowcaseItem}
+              style={{maxWidth: theme?.showcaseVertical ? 300 : 500}}
             >
               <img
                 src={item.src}
