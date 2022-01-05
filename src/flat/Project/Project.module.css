@@ -1,3 +1,7 @@
+.projectsContainer{
+  
+}
+
 .projectImage {
   width: 45%;
   border-radius: 10px;
@@ -6,6 +10,12 @@
 
 .projectDescriptionContainer{
     width: 45%;
+}
+
+@media all and (max-width: 1260px){
+  .projectsContainer{
+    margin-top: 200px;
+  }
 }
 
 @media all and (max-width: 768px) {

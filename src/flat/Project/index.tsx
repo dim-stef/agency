@@ -26,7 +26,8 @@ function Project() {
       flexFlow="column"
       justifyContent="center"
       alignItems="center"
-      mt={isLargerThan1000 ? 0 : "200px"}
+      // mt={isLargerThan1000 ? 0 : "200px"}
+      className={styles.projectsContainer}
     >
       <Heading>introducing {theme?.name.toLowerCase()}</Heading>
       <Flex
@@ -52,7 +53,11 @@ function Project() {
           <Press project={theme} />
           <Flex flexFlow="row wrap" mt={10}>
             {theme?.tags.map((tag) => {
-              return <Tag mr={2} mt={2}>{tag}</Tag>;
+              return (
+                <Tag mr={2} mt={2}>
+                  {tag}
+                </Tag>
+              );
             })}
           </Flex>
         </Flex>

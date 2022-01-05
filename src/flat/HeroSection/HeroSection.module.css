@@ -12,7 +12,7 @@
 
 @media all and (max-width: 1260px) {
   .ourWork {
-    top: -20px;
+    top: -40px;
   }
   .heroContainer {
     flex-flow: column;
