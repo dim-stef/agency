@@ -18,7 +18,7 @@ function NavigationBar() {
       pr={10}
     >
       <Flex flex={1} h="100%" alignItems="center">
-        <NavigationBarLink href="/" title="project69" />
+        {/* <NavigationBarLink href="/" title="project69" /> */}
       </Flex>
       <NavigationBarLink href="/" title="about" />
       <NavigationBarLink href="/" title="work with us" />
